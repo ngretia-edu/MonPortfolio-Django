@@ -1,0 +1,1315 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    
+    <!-- Métadonnées SEO -->
+    <title>Héritier Jospin NGRETIA - Portfolio Développeur Full Stack</title>
+    <meta name="description" content="Portfolio de Héritier Jospin NGRETIA, étudiant en Génie Informatique spécialisé en développement web, infographie et intelligence artificielle.">
+    <meta name="keywords" content="développeur, full stack, django, react, infographie, photoshop, illustrator, intelligence artificielle">
+    <meta name="author" content="Héritier Jospin NGRETIA">
+    
+    <!-- Open Graph pour les réseaux sociaux -->
+    <meta property="og:title" content="Héritier Jospin NGRETIA - Portfolio">
+    <meta property="og:description" content="Découvrez mes projets et compétences en développement web et infographie">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="">
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Héritier Jospin NGRETIA - Portfolio">
+    <meta name="twitter:description" content="Portfolio développeur Full Stack">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="/static/favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="/static/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/static/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/static/favicon-16x16.png">
+    
+    <!-- Fonts Google -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&family=Playfair+Display:wght@400;700;900&display=swap" rel="stylesheet">
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Font Awesome Icons -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    
+    <!-- AOS Animation Library -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet">
+    
+    <!-- Particles.js pour les animations de fond -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/particles.js/2.0.0/particles.min.js"></script>
+    
+    <!-- GSAP pour les animations avancées -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/TextPlugin.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    
+    <style>
+        /* Variables CSS personnalisées */
+        :root {
+            --primary-color: #007bff;
+            --secondary-color: #6c757d;
+            --success-color: #28a745;
+            --warning-color: #ffc107;
+            --danger-color: #dc3545;
+            --dark-color: #212529;
+            --light-color: #f8f9fa;
+            --font-family-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            --font-family-mono: 'JetBrains Mono', 'Fira Code', monospace;
+            --box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+            --box-shadow-lg: 0 1rem 3rem rgba(0, 0, 0, 0.175);
+            --border-radius: 0.375rem;
+            --transition: all 0.3s ease;
+            
+            /* Couleurs pour l'animation */
+            --primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --secondary-gradient: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            --dark-gradient: linear-gradient(135deg, #0c0c0c 0%, #1a1a1a 100%);
+            --neon-blue: #00f5ff;
+            --neon-purple: #bf00ff;
+            --neon-green: #00ff88;
+            --glass-bg: rgba(255, 255, 255, 0.1);
+            --glass-border: rgba(255, 255, 255, 0.2);
+        }
+        
+        /* Reset et styles de base */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: var(--font-family-sans);
+            line-height: 1.6;
+            color: var(--dark-color);
+            background-color: #ffffff;
+            overflow-x: hidden;
+        }
+        
+        /* ===== LOADER INITIAL (Django Style) ===== */
+        .page-loader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 10001;
+            transition: opacity 0.5s ease;
+        }
+        
+        .loader-content {
+            text-align: center;
+            color: white;
+        }
+        
+        .spinner {
+            width: 50px;
+            height: 50px;
+            border: 3px solid rgba(255, 255, 255, 0.3);
+            border-top: 3px solid white;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 20px;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        .loader-text {
+            font-size: 1.2rem;
+            font-weight: 500;
+            margin-bottom: 10px;
+        }
+        
+        .loader-subtext {
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+        
+        /* ===== ÉCRAN D'ANIMATION SPECTACULAIRE ===== */
+        .spectacular-welcome {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #0a0a0a;
+            color: #ffffff;
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 10000;
+            overflow: hidden;
+        }
+        
+        .spectacular-welcome.show {
+            display: flex;
+        }
+        
+        .welcome-container {
+            text-align: center;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .digital-rain {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+        }
+        
+        .hologram-logo {
+            width: 150px;
+            height: 150px;
+            border: 3px solid var(--neon-blue);
+            border-radius: 50%;
+            margin: 0 auto 30px;
+            position: relative;
+            background: radial-gradient(circle, rgba(0, 245, 255, 0.1), transparent);
+            animation: hologramPulse 2s ease-in-out infinite, rotate360 10s linear infinite;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 0 50px var(--neon-blue), inset 0 0 30px rgba(0, 245, 255, 0.1);
+        }
+        
+        .hologram-logo::before {
+            content: '';
+            position: absolute;
+            width: 120px;
+            height: 120px;
+            border: 2px solid var(--neon-purple);
+            border-radius: 50%;
+            animation: hologramPulse 2s ease-in-out infinite reverse;
+        }
+        
+        .hologram-logo i {
+            font-size: 4rem;
+            color: var(--neon-blue);
+            text-shadow: 0 0 20px var(--neon-blue);
+            animation: glow 2s ease-in-out infinite alternate;
+        }
+        
+        .hero-title {
+            font-size: 4rem;
+            font-weight: 900;
+            margin-bottom: 20px;
+            background: linear-gradient(45deg, var(--neon-blue), var(--neon-purple), var(--neon-green));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .hero-subtitle {
+            font-size: 1.5rem;
+            margin-bottom: 30px;
+            opacity: 0.8;
+        }
+        
+        .typing-animation {
+            font-family: 'JetBrains Mono', monospace;
+            color: var(--neon-green);
+        }
+        
+        .cursor {
+            animation: blink 1s infinite;
+        }
+        
+        @keyframes blink {
+            0%, 50% { opacity: 1; }
+            51%, 100% { opacity: 0; }
+        }
+        
+        .glow-button {
+            background: linear-gradient(45deg, var(--neon-blue), var(--neon-purple));
+            border: none;
+            border-radius: 50px;
+            padding: 15px 40px;
+            color: white;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(0, 245, 255, 0.3);
+            cursor: pointer;
+            margin: 0 10px;
+        }
+        
+        .glow-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+            transition: left 0.5s;
+        }
+        
+        .glow-button:hover::before {
+            left: 100%;
+        }
+        
+        .glow-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(0, 245, 255, 0.5);
+        }
+        
+        /* ===== FOND ANIMÉ AVEC PARTICULES ===== */
+        #particles-js {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: -2;
+        }
+        
+        .floating-shapes {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            pointer-events: none;
+        }
+        
+        .shape {
+            position: absolute;
+            opacity: 0.1;
+            animation: float 20s infinite linear;
+        }
+        
+        .shape-1 { top: 10%; left: 10%; animation-delay: 0s; }
+        .shape-2 { top: 20%; right: 10%; animation-delay: 5s; }
+        .shape-3 { bottom: 20%; left: 20%; animation-delay: 10s; }
+        .shape-4 { bottom: 10%; right: 20%; animation-delay: 15s; }
+        
+        /* ===== MODAL DE CONTACT ===== */
+        .contact-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .contact-modal.show {
+            display: flex;
+        }
+        
+        .contact-content {
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            padding: 40px;
+            text-align: center;
+            position: relative;
+            max-width: 500px;
+            width: 90%;
+            animation: modalSlideIn 0.5s ease-out;
+            color: white;
+        }
+        
+        .close-modal {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+        
+        .close-modal:hover {
+            color: var(--neon-blue);
+        }
+        
+        .contact-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 30px;
+            flex-wrap: wrap;
+        }
+        
+        .contact-link {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 15px 25px;
+            background: linear-gradient(45deg, var(--neon-blue), var(--neon-purple));
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0, 245, 255, 0.3);
+        }
+        
+        .contact-link:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(0, 245, 255, 0.5);
+            color: white;
+        }
+        
+        .neon-text {
+            color: var(--neon-blue);
+            text-shadow: 0 0 10px var(--neon-blue), 0 0 20px var(--neon-blue), 0 0 30px var(--neon-blue);
+            animation: neonFlicker 2s infinite alternate;
+        }
+        
+        /* ===== CONTENU PRINCIPAL DU PORTFOLIO ===== */
+        .portfolio-content {
+            opacity: 0;
+            display: none;
+            min-height: 100vh;
+            background: #ffffff;
+            color: var(--dark-color);
+            transition: opacity 0.5s ease;
+        }
+        
+        .portfolio-content.loaded {
+            opacity: 1;
+            display: block;
+        }
+        
+        /* ===== ANIMATIONS KEYFRAMES ===== */
+        @keyframes hologramPulse {
+            0%, 100% { transform: scale(1); box-shadow: 0 0 50px var(--neon-blue); }
+            50% { transform: scale(1.05); box-shadow: 0 0 80px var(--neon-blue), 0 0 100px var(--neon-purple); }
+        }
+        
+        @keyframes rotate360 {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        
+        @keyframes glow {
+            from { text-shadow: 0 0 20px var(--neon-blue); }
+            to { text-shadow: 0 0 30px var(--neon-blue), 0 0 40px var(--neon-purple); }
+        }
+        
+        @keyframes float {
+            0% { transform: translateY(0px) rotate(0deg); opacity: 0.1; }
+            50% { opacity: 0.3; }
+            100% { transform: translateY(-100vh) rotate(360deg); opacity: 0; }
+        }
+        
+        @keyframes neonFlicker {
+            0%, 100% { text-shadow: 0 0 10px var(--neon-blue), 0 0 20px var(--neon-blue); }
+            50% { text-shadow: 0 0 5px var(--neon-blue), 0 0 10px var(--neon-blue), 0 0 15px var(--neon-purple); }
+        }
+        
+        @keyframes modalSlideIn {
+            from {
+                opacity: 0;
+                transform: translateY(-50px) scale(0.9);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+        
+        /* ===== EFFETS MAGNÉTIQUES ===== */
+        .magnetic-effect {
+            transition: transform 0.2s ease;
+        }
+        
+        /* ===== STYLES POUR LE CONTENU DJANGO ===== */
+        .django-content {
+            padding: 0;
+        }
+        
+        /* Timeline styles */
+        .timeline {
+            position: relative;
+            padding-left: 30px;
+        }
+        
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 15px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: var(--primary-color);
+        }
+        
+        .timeline-item {
+            position: relative;
+            margin-bottom: 30px;
+        }
+        
+        .timeline-marker {
+            position: absolute;
+            left: -23px;
+            top: 20px;
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            border: 3px solid white;
+            box-shadow: 0 0 0 3px var(--primary-color);
+        }
+        
+        .timeline-content {
+            margin-left: 20px;
+        }
+        
+        /* Styles pour les cartes de projets */
+        .project-card {
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15) !important;
+        }
+        
+        /* Navigation fixe */
+        .navbar.fixed-top {
+            backdrop-filter: blur(10px);
+            background-color: rgba(255, 255, 255, 0.95) !important;
+        }
+        
+        /* Amélioration des badges */
+        .badge {
+            font-weight: 500;
+        }
+        
+        /* Smooth scroll */
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        /* Animation pour les sections */
+        section {
+            scroll-margin-top: 100px;
+        }
+        
+        /* Styles pour les compétences */
+        .progress-bar {
+            transition: width 1s ease-in-out;
+        }
+        
+        /* Styles responsive améliorés */
+        @media (max-width: 768px) {
+            .timeline {
+                padding-left: 20px;
+            }
+            
+            .timeline-marker {
+                left: -18px;
+                width: 12px;
+                height: 12px;
+            }
+            
+            .timeline-content {
+                margin-left: 15px;
+            }
+            
+            .display-4 {
+                font-size: 2.5rem;
+            }
+            
+            .hologram-logo {
+                width: 120px;
+                height: 120px;
+            }
+            
+            .hologram-logo i {
+                font-size: 3rem;
+            }
+            
+            .hero-title {
+                font-size: 2.5rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1.2rem;
+            }
+            
+            .contact-links {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .contact-link {
+                width: 100%;
+                justify-content: center;
+            }
+            
+            .glow-button {
+                display: block;
+                margin: 10px auto;
+            }
+        }
+        
+        /* ===== STYLES POUR LES ERREURS ===== */
+        .error-container {
+            display: none;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #ff6b6b 0%, #ee5a24 100%);
+            color: white;
+            padding: 2rem;
+        }
+        
+        .error-content {
+            max-width: 600px;
+            margin: 0 auto;
+            text-align: center;
+            padding-top: 10vh;
+        }
+        
+        .error-icon {
+            font-size: 4rem;
+            margin-bottom: 2rem;
+            opacity: 0.8;
+        }
+        
+        .error-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+        
+        .error-message {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+        
+        .btn-error {
+            background: rgba(255, 255, 255, 0.2);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: var(--border-radius);
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+            margin: 0 10px;
+        }
+        
+        .btn-error:hover {
+            background: rgba(255, 255, 255, 0.3);
+            border-color: rgba(255, 255, 255, 0.5);
+            color: white;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <!-- Loader initial Django -->
+    <div id="page-loader" class="page-loader">
+        <div class="loader-content">
+            <div class="spinner"></div>
+            <div class="loader-text">Chargement du portfolio</div>
+            <div class="loader-subtext">Veuillez patienter...</div>
+        </div>
+    </div>
+    
+    <!-- Container d'erreur -->
+    <div id="error-container" class="error-container">
+        <div class="error-content">
+            <div class="error-icon">
+                <i class="fas fa-exclamation-triangle"></i>
+            </div>
+            <h1 class="error-title">Erreur de chargement</h1>
+            <p class="error-message">
+                Une erreur s'est produite lors du chargement du portfolio. 
+                Veuillez vérifier votre connexion internet et réessayer.
+            </p>
+            <div class="error-actions">
+                <a href="#" class="btn-error" onclick="location.reload()">
+                    <i class="fas fa-redo"></i> Recharger la page
+                </a>
+                <a href="/admin/" class="btn-error">
+                    <i class="fas fa-cog"></i> Administration
+                </a>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Écran d'animation spectaculaire -->
+    <div id="spectacular-welcome" class="spectacular-welcome">
+        <canvas id="digital-rain" class="digital-rain"></canvas>
+        
+        <!-- Fond animé -->
+        <div id="particles-js"></div>
+        
+        <!-- Formes flottantes -->
+        <div class="floating-shapes">
+            <div class="shape shape-1">
+                <i class="fab fa-react" style="font-size: 100px; color: var(--neon-blue);"></i>
+            </div>
+            <div class="shape shape-2">
+                <i class="fab fa-python" style="font-size: 80px; color: var(--neon-green);"></i>
+            </div>
+            <div class="shape shape-3">
+                <i class="fab fa-js-square" style="font-size: 90px; color: var(--neon-purple);"></i>
+            </div>
+            <div class="shape shape-4">
+                <i class="fas fa-database" style="font-size: 70px; color: var(--neon-blue);"></i>
+            </div>
+        </div>
+        
+        <div class="welcome-container">
+            <div class="hologram-logo">
+                <i class="fas fa-code"></i>
+            </div>
+            <h1 class="hero-title" id="hero-title">HÉRITIER JOSPIN NGRETIA</h1>
+            <h2 class="hero-subtitle">
+                <span class="typing-animation" id="typing-text"></span>
+                <span class="cursor">|</span>
+            </h2>
+            <div class="mt-4">
+                <button class="glow-button magnetic-effect" onclick="startPortfolio()">
+                    <i class="fas fa-rocket me-2"></i>Explorer Portfolio
+                </button>
+                <button class="glow-button magnetic-effect" onclick="contactMe()">
+                    <i class="fas fa-envelope me-2"></i>Me Contacter
+                </button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Modal de contact -->
+    <div id="contact-modal" class="contact-modal">
+        <div class="contact-content">
+            <button class="close-modal" onclick="closeContactModal()">&times;</button>
+            <h3 class="neon-text mb-4">Contactez-moi</h3>
+            <p class="mb-4">Choisissez votre moyen de contact préféré :</p>
+            <div class="contact-links">
+                <a href="mailto:heritier.ngretia@example.com" class="contact-link">
+                    <i class="fas fa-envelope"></i>
+                    Email
+                </a>
+                <a href="https://linkedin.com/in/heritier-ngretia" target="_blank" class="contact-link">
+                    <i class="fab fa-linkedin"></i>
+                    LinkedIn
+                </a>
+                <a href="https://github.com/heritier-ngretia" target="_blank" class="contact-link">
+                    <i class="fab fa-github"></i>
+                    GitHub
+                </a>
+                <a href="tel:+237123456789" class="contact-link">
+                    <i class="fas fa-phone"></i>
+                    Téléphone
+                </a>
+                <a href="https://wa.me/237123456789" target="_blank" class="contact-link">
+                    <i class="fab fa-whatsapp"></i>
+                    WhatsApp
+                </a>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Container principal du portfolio Django -->
+    <div id="portfolio-content" class="portfolio-content">
+        <!-- Ici sera chargé le contenu de votre application React/Django -->
+        <div id="root" class="django-content"></div>
+    </div>
+    
+    <!-- Scripts JavaScript -->
+    
+    <!-- Bootstrap JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- AOS Animation -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    
+    <!-- React Development -->
+    <script crossorigin src="https://cdnjs.cloudflare.com/ajax/libs/react/18.2.0/umd/react.development.js"></script>
+    <script crossorigin src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.2.0/umd/react-dom.development.js"></script>
+    
+    <!-- Babel pour la transpilation JSX -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/7.23.4/babel.min.js"></script>
+    
+    <!-- Axios pour les requêtes HTTP -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.6.0/axios.min.js"></script>
+    
+    <!-- Configuration globale -->
+    <script>
+        // Configuration globale de l'application
+        window.PORTFOLIO_CONFIG = {
+            API_BASE_URL: '/api',
+            DEBUG: false,
+            MEDIA_URL: '/media/',
+            STATIC_URL: '/static/',
+            CONTACT_LINKS: {
+                email: 'heritier.ngretia@example.com',
+                linkedin: 'https://linkedin.com/in/heritier-ngretia',
+                github: 'https://github.com/heritier-ngretia',
+                phone: '+237123456789',
+                whatsapp: 'https://wa.me/237123456789'
+            }
+        };
+        
+        // États de l'application
+        let isWelcomeShown = false;
+        let isPortfolioLoaded = false;
+        let portfolioData = null;
+        
+        // ===== DIGITAL RAIN EFFECT =====
+        class DigitalRain {
+            constructor(canvas) {
+                this.canvas = canvas;
+                this.ctx = canvas.getContext('2d');
+                this.canvas.width = window.innerWidth;
+                this.canvas.height = window.innerHeight;
+                
+                this.chars = '01010101010101010101010101010101010101JOSPIN0101010101010101NGRETIA0101010101HERITIER010101010101010101010101010101010101010101010101JOSPIN0101010101010101NGRETIA0101010101HERITIER01010101010123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+                this.charArray = this.chars.split('');
+                this.fontSize = 14;
+                this.columns = this.canvas.width / this.fontSize;
+                this.drops = [];
+                
+                for(let x = 0; x < this.columns; x++) {
+                    this.drops[x] = 1;
+                }
+            }
+            
+            draw() {
+                this.ctx.fillStyle = 'rgba(0, 0, 0, 0.04)';
+                this.ctx.fillRect(0, 0, this.canvas.width, this.canvas.height);
+                
+                this.ctx.fillStyle = '#00ff88';
+                this.ctx.font = this.fontSize + 'px monospace';
+                
+                for(let i = 0; i < this.drops.length; i++) {
+                    const text = this.charArray[Math.floor(Math.random() * this.charArray.length)];
+                    this.ctx.fillText(text, i * this.fontSize, this.drops[i] * this.fontSize);
+                    
+                    if(this.drops[i] * this.fontSize > this.canvas.height && Math.random() > 0.975) {
+                        this.drops[i] = 0;
+                    }
+                    this.drops[i]++;
+                }
+            }
+            
+            start() {
+                const animate = () => {
+                    this.draw();
+                    requestAnimationFrame(animate);
+                };
+                animate();
+            }
+        }
+        
+        // ===== PARTICLES CONFIGURATION =====
+        const particlesConfig = {
+            particles: {
+                number: { value: 160, density: { enable: true, value_area: 800 } },
+                color: { value: ["#00f5ff", "#bf00ff", "#00ff88"] },
+                shape: {
+                    type: "circle",
+                    stroke: { width: 0, color: "#000000" },
+                    polygon: { nb_sides: 5 }
+                },
+                opacity: {
+                    value: 0.5,
+                    random: false,
+                    anim: { enable: true, speed: 1, opacity_min: 0.1, sync: false }
+                },
+                size: {
+                    value: 3,
+                    random: true,
+                    anim: { enable: true, speed: 10, size_min: 0.1, sync: false }
+                },
+                line_linked: {
+                    enable: true,
+                    distance: 150,
+                    color: "#00f5ff",
+                    opacity: 0.4,
+                    width: 1
+                },
+                move: {
+                    enable: true,
+                    speed: 6,
+                    direction: "none",
+                    random: false,
+                    straight: false,
+                    out_mode: "out",
+                    bounce: false,
+                    attract: { enable: false, rotateX: 600, rotateY: 1200 }
+                }
+            },
+            interactivity: {
+                detect_on: "canvas",
+                events: {
+                    onhover: { enable: true, mode: "grab" },
+                    onclick: { enable: true, mode: "push" },
+                    resize: true
+                },
+                modes: {
+                    grab: { distance: 140, line_linked: { opacity: 1 } },
+                    bubble: { distance: 400, size: 40, duration: 2, opacity: 8, speed: 3 },
+                    repulse: { distance: 200, duration: 0.4 },
+                    push: { particles_nb: 4 },
+                    remove: { particles_nb: 2 }
+                }
+            },
+            retina_detect: true
+        };
+        
+        // ===== TYPING ANIMATION =====
+        class TypeWriter {
+            constructor(txtElement, words, wait = 3000) {
+                this.txtElement = txtElement;
+                this.words = words;
+                this.txt = '';
+                this.wordIndex = 0;
+                this.wait = parseInt(wait, 10);
+                this.type();
+                this.isDeleting = false;
+            }
+            
+            type() {
+                const current = this.wordIndex % this.words.length;
+                const fullTxt = this.words[current];
+                
+                if(this.isDeleting) {
+                    this.txt = fullTxt.substring(0, this.txt.length - 1);
+                } else {
+                    this.txt = fullTxt.substring(0, this.txt.length + 1);
+                }
+                
+                this.txtElement.innerHTML = this.txt;
+                
+                let typeSpeed = 150;
+                if(this.isDeleting) typeSpeed /= 2;
+                
+                if(!this.isDeleting && this.txt === fullTxt) {
+                    typeSpeed = this.wait;
+                    this.isDeleting = true;
+                } else if(this.isDeleting && this.txt === '') {
+                    this.isDeleting = false;
+                    this.wordIndex++;
+                    typeSpeed = 500;
+                }
+                
+                setTimeout(() => this.type(), typeSpeed);
+            }
+        }
+        
+        // ===== GESTION DU SÉQUENÇAGE D'ANIMATIONS =====
+        
+        // Étape 1: Chargement initial Django
+        window.addEventListener('load', function() {
+            // Initialisation d'AOS pour le contenu portfolio
+            if (typeof AOS !== 'undefined') {
+                AOS.init({
+                    duration: 800,
+                    easing: 'ease-in-out',
+                    once: true,
+                    offset: 100
+                });
+            }
+            
+            // Simuler le chargement des données Django/React
+            setTimeout(() => {
+                hideInitialLoader();
+            }, 2000); // 2 secondes pour le loader initial
+        });
+        
+        // Étape 2: Masquer le loader initial et afficher l'animation
+        function hideInitialLoader() {
+            const loader = document.getElementById('page-loader');
+            const welcomeScreen = document.getElementById('spectacular-welcome');
+            
+            // Masquer le loader avec transition
+            gsap.to(loader, {
+                opacity: 0,
+                duration: 0.5,
+                onComplete: () => {
+                    loader.style.display = 'none';
+                    showWelcomeAnimation();
+                }
+            });
+        }
+        
+        // Étape 3: Afficher l'animation spectaculaire
+        function showWelcomeAnimation() {
+            const welcomeScreen = document.getElementById('spectacular-welcome');
+            welcomeScreen.classList.add('show');
+            
+            // Démarrer Digital Rain
+            const rainCanvas = document.getElementById('digital-rain');
+            const digitalRain = new DigitalRain(rainCanvas);
+            digitalRain.start();
+            
+            // Démarrer Particles
+            particlesJS('particles-js', particlesConfig);
+            
+            // Animation du titre héro
+            gsap.fromTo('#hero-title', 
+                { y: 100, opacity: 0, scale: 0.5 },
+                { y: 0, opacity: 1, scale: 1, duration: 1.5, ease: "elastic.out(1, 0.3)", delay: 0.5 }
+            );
+            
+            // Animation des boutons
+            gsap.fromTo('.glow-button', 
+                { y: 50, opacity: 0 },
+                { y: 0, opacity: 1, duration: 1, stagger: 0.2, delay: 1.5, ease: "back.out(1.7)" }
+            );
+            
+            // Démarrer l'animation de typing
+            setTimeout(() => {
+                const txtElement = document.getElementById('typing-text');
+                const words = ['Développeur Full Stack', 'Expert en IA', 'Designer UI/UX', 'Créateur Digital'];
+                new TypeWriter(txtElement, words, 2000);
+            }, 1000);
+            
+            isWelcomeShown = true;
+        }
+        
+        // ===== EFFETS MAGNÉTIQUES =====
+        document.addEventListener('mousemove', (e) => {
+            if (!isWelcomeShown) return;
+            
+            const magneticElements = document.querySelectorAll('.magnetic-effect');
+            
+            magneticElements.forEach(element => {
+                const rect = element.getBoundingClientRect();
+                const x = e.clientX - rect.left - rect.width / 2;
+                const y = e.clientY - rect.top - rect.height / 2;
+                const distance = Math.sqrt(x * x + y * y);
+                
+                if (distance < 100) {
+                    const strength = (100 - distance) / 100;
+                    gsap.to(element, {
+                        x: x * strength * 0.3,
+                        y: y * strength * 0.3,
+                        duration: 0.3,
+                        ease: "power2.out"
+                    });
+                } else {
+                    gsap.to(element, {
+                        x: 0,
+                        y: 0,
+                        duration: 0.5,
+                        ease: "power2.out"
+                    });
+                }
+            });
+        });
+        
+        // ===== FONCTIONS PRINCIPALES =====
+        
+        // Fonction pour démarrer le portfolio principal - CORRIGÉE
+        function startPortfolio() {
+            const welcomeScreen = document.getElementById('spectacular-welcome');
+            const portfolioContent = document.getElementById('portfolio-content');
+            
+            // Animation de sortie de l'écran d'accueil
+            gsap.to(welcomeScreen, {
+                opacity: 0,
+                scale: 0.9,
+                duration: 0.8,
+                ease: "power2.inOut",
+                onComplete: () => {
+                    welcomeScreen.classList.remove('show');
+                    welcomeScreen.style.display = 'none';
+                    
+                    // Afficher le contenu portfolio
+                    portfolioContent.style.display = 'block';
+                    portfolioContent.classList.add('loaded');
+                    
+                    // Charger le contenu React/Django si pas encore fait
+                    if (!isPortfolioLoaded) {
+                        loadPortfolioContent();
+                    }
+                }
+            });
+        }
+        
+        // Fonction pour charger le contenu du portfolio - CORRIGÉE
+        function loadPortfolioContent() {
+            try {
+                // Charger les données depuis l'API Django
+                loadDjangoData();
+                isPortfolioLoaded = true;
+                
+            } catch (error) {
+                console.error('Erreur lors du chargement du portfolio:', error);
+                showErrorScreen('Erreur lors du chargement du contenu du portfolio.');
+            }
+        }
+        
+        // Fonction pour charger les données Django - CORRIGÉE
+        async function loadDjangoData() {
+            try {
+                // Appel à l'API selon votre app.jsx
+                const response = await axios.get('/api/portfolio/');
+                
+                if (response.data.success) {
+                    portfolioData = response.data;
+                    displayPortfolioData(response.data);
+                } else {
+                    throw new Error(response.data.error || 'Erreur lors du chargement');
+                }
+                
+            } catch (error) {
+                console.error('Erreur lors du chargement des données:', error);
+                // Utiliser React pour afficher l'erreur ou le contenu de fallback
+                displayReactContent();
+            }
+        }
+        
+        // Fonction pour afficher le contenu React - NOUVELLE
+        function displayReactContent() {
+            const root = document.getElementById('root');
+            
+            // Le composant React sera rendu ici automatiquement
+            // par le script app.jsx qui est chargé à la fin
+            
+            // Réinitialiser AOS
+            if (typeof AOS !== 'undefined') {
+                setTimeout(() => {
+                    AOS.refresh();
+                }, 100);
+            }
+        }
+        
+        // Fonction pour afficher les données réelles du portfolio - SIMPLIFIÉE  
+        function displayPortfolioData(data) {
+            // Cette fonction est maintenant gérée par React
+            // Les données sont stockées dans portfolioData et utilisées par React
+            displayReactContent();
+        }
+        
+        // ===== FONCTIONS DE CONTACT =====
+        
+        function contactMe() {
+            const modal = document.getElementById('contact-modal');
+            modal.classList.add('show');
+            
+            // Animation d'apparition du modal
+            gsap.fromTo('.contact-content', 
+                { scale: 0.5, opacity: 0, y: -50 },
+                { scale: 1, opacity: 1, y: 0, duration: 0.5, ease: "back.out(1.7)" }
+            );
+            
+            // Mettre à jour les liens de contact
+            updateContactLinks();
+        }
+        
+        function closeContactModal() {
+            const modal = document.getElementById('contact-modal');
+            
+            gsap.to('.contact-content', {
+                scale: 0.5,
+                opacity: 0,
+                y: -50,
+                duration: 0.3,
+                ease: "power2.inOut",
+                onComplete: () => {
+                    modal.classList.remove('show');
+                }
+            });
+        }
+        
+        function updateContactLinks() {
+            const config = window.PORTFOLIO_CONFIG.CONTACT_LINKS;
+            
+            // Si on a des données réelles, les utiliser
+            if (portfolioData && portfolioData.profile) {
+                const profile = portfolioData.profile;
+                config.email = profile.email;
+                config.linkedin = profile.linkedin || '';
+                config.github = profile.github || '';
+                config.phone = profile.telephone || '';
+                config.whatsapp = profile.telephone ? `https://wa.me/${profile.telephone.replace(/\D/g, '')}` : '';
+            }
+            
+            const contactLinks = document.querySelectorAll('.contact-link');
+            
+            contactLinks.forEach(link => {
+                const icon = link.querySelector('i');
+                if (icon.classList.contains('fa-envelope')) {
+                    link.href = `mailto:${config.email}`;
+                } else if (icon.classList.contains('fa-linkedin')) {
+                    link.href = config.linkedin;
+                    if (!config.linkedin) link.style.display = 'none';
+                } else if (icon.classList.contains('fa-github')) {
+                    link.href = config.github;
+                    if (!config.github) link.style.display = 'none';
+                } else if (icon.classList.contains('fa-phone')) {
+                    link.href = `tel:${config.phone}`;
+                    if (!config.phone) link.style.display = 'none';
+                } else if (icon.classList.contains('fa-whatsapp')) {
+                    link.href = config.whatsapp;
+                    if (!config.whatsapp) link.style.display = 'none';
+                }
+            });
+        }
+        
+        // ===== GESTION DES ERREURS =====
+        
+        function showErrorScreen(message) {
+            const loader = document.getElementById('page-loader');
+            const welcomeScreen = document.getElementById('spectacular-welcome');
+            const errorContainer = document.getElementById('error-container');
+            const portfolioContent = document.getElementById('portfolio-content');
+            
+            // Masquer tous les autres écrans
+            if (loader) loader.style.display = 'none';
+            if (welcomeScreen) welcomeScreen.style.display = 'none';
+            if (portfolioContent) portfolioContent.style.display = 'none';
+            
+            // Afficher l'écran d'erreur
+            if (errorContainer) {
+                errorContainer.style.display = 'flex';
+                const errorMessage = errorContainer.querySelector('.error-message');
+                if (errorMessage && message) {
+                    errorMessage.textContent = message;
+                }
+            }
+        }
+        
+        // ===== GESTION DES ÉVÉNEMENTS =====
+        
+        // Fermer le modal en cliquant à l'extérieur
+        document.addEventListener('click', (e) => {
+            const modal = document.getElementById('contact-modal');
+            if (e.target === modal) {
+                closeContactModal();
+            }
+        });
+        
+        // Fermer le modal avec la touche Escape
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                const modal = document.getElementById('contact-modal');
+                if (modal.classList.contains('show')) {
+                    closeContactModal();
+                }
+            }
+        });
+        
+        // Gestion du redimensionnement
+        window.addEventListener('resize', () => {
+            const rainCanvas = document.getElementById('digital-rain');
+            if (rainCanvas) {
+                rainCanvas.width = window.innerWidth;
+                rainCanvas.height = window.innerHeight;
+            }
+        });
+        
+        // ===== CONFIGURATION AXIOS =====
+        if (typeof axios !== 'undefined') {
+            axios.defaults.baseURL = window.PORTFOLIO_CONFIG.API_BASE_URL;
+            axios.defaults.timeout = 10000;
+            
+            // Intercepteur pour les erreurs
+            axios.interceptors.response.use(
+                response => response,
+                error => {
+                    if (error.response) {
+                        console.error('Erreur API:', error.response.status, error.response.data);
+                    } else if (error.request) {
+                        console.error('Erreur réseau:', error.message);
+                    } else {
+                        console.error('Erreur:', error.message);
+                    }
+                    return Promise.reject(error);
+                }
+            );
+        }
+        
+        // ===== GESTION DES ERREURS GLOBALES =====
+        window.addEventListener('error', function(e) {
+            console.error('Erreur JavaScript:', e.error);
+            if (window.PORTFOLIO_CONFIG.DEBUG) {
+                console.log('Stack trace:', e.error.stack);
+            }
+        });
+        
+        window.addEventListener('unhandledrejection', function(e) {
+            console.error('Promesse rejetée non gérée:', e.reason);
+        });
+        
+        // ===== FONCTIONS UTILITAIRES =====
+        
+        function isMobile() {
+            return window.innerWidth <= 768;
+        }
+        
+        function adjustAnimationsForDevice() {
+            if (isMobile()) {
+                gsap.globalTimeline.timeScale(0.7);
+            }
+        }
+        
+        // ===== OPTIMISATIONS DE PERFORMANCE =====
+        
+        // Préchargement des ressources
+        function preloadResources() {
+            const resources = [
+                // Ajoutez ici les URLs de vos images
+            ];
+            
+            resources.forEach(src => {
+                const img = new Image();
+                img.src = src;
+            });
+        }
+        
+        // Démarrer le préchargement
+        preloadResources();
+        
+        // ===== INITIALISATIONS FINALES =====
+        
+        // Ajuster les animations selon l'appareil
+        document.addEventListener('DOMContentLoaded', adjustAnimationsForDevice);
+        window.addEventListener('resize', adjustAnimationsForDevice);
+        
+        // Service Worker pour le cache (optionnel)
+        if ('serviceWorker' in navigator && !window.PORTFOLIO_CONFIG.DEBUG) {
+            window.addEventListener('load', function() {
+                navigator.serviceWorker.register('/static/js/sw.js')
+                    .then(registration => {
+                        console.log('Service Worker enregistré:', registration);
+                    })
+                    .catch(error => {
+                        console.log('Erreur Service Worker:', error);
+                    });
+            });
+        }
+    </script>
+    
+    <!-- Script principal de l'application React (votre app.jsx existant) -->
+    <script type="text/babel" src="/static/js/app.jsx"></script>
+</body>
+</html>

@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    
+    <!-- Métadonnées SEO -->
+    <title>Héritier Jospin NGRETIA - Portfolio Développeur Full Stack</title>
+    <meta name="description" content="Portfolio de Héritier Jospin NGRETIA, étudiant en Génie Informatique spécialisé en développement web, infographie et intelligence artificielle.">
+    <meta name="keywords" content="développeur, full stack, django, react, infographie, photoshop, illustrator, intelligence artificielle">
+    <meta name="author" content="Héritier Jospin NGRETIA">
+    
+    <!-- Open Graph pour les réseaux sociaux -->
+    <meta property="og:title" content="Héritier Jospin NGRETIA - Portfolio">
+    <meta property="og:description" content="Découvrez mes projets et compétences en développement web et infographie">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="{{ request.build_absolute_uri }}">
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Héritier Jospin NGRETIA - Portfolio">
+    <meta name="twitter:description" content="Portfolio développeur Full Stack">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="/static/favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="/static/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/static/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/static/favicon-16x16.png">
+    
+    <!-- Fonts Google -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Font Awesome Icons -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    
+    <!-- AOS Animation Library -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet">
+    
+    <!-- CSS personnalisé -->
+    <style>
+        /* Variables CSS personnalisées */
+        :root {
+            --primary-color: #007bff;
+            --secondary-color: #6c757d;
+            --success-color: #28a745;
+            --warning-color: #ffc107;
+            --danger-color: #dc3545;
+            --dark-color: #212529;
+            --light-color: #f8f9fa;
+            --font-family-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            --font-family-mono: 'JetBrains Mono', 'Fira Code', monospace;
+            --box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+            --box-shadow-lg: 0 1rem 3rem rgba(0, 0, 0, 0.175);
+            --border-radius: 0.375rem;
+            --transition: all 0.3s ease;
+        }
+        
+        /* Reset et styles de base */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: var(--font-family-sans);
+            line-height: 1.6;
+            color: var(--dark-color);
+            background-color: #ffffff;
+        }
+        
+        /* Styles pour le loader */
+        .page-loader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            transition: opacity 0.5s ease;
+        }
+        
+        .loader-content {
+            text-align: center;
+            color: white;
+        }
+        
+        .spinner {
+            width: 50px;
+            height: 50px;
+            border: 3px solid rgba(255, 255, 255, 0.3);
+            border-top: 3px solid white;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 20px;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        .loader-text {
+            font-size: 1.2rem;
+            font-weight: 500;
+            margin-bottom: 10px;
+        }
+        
+        .loader-subtext {
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+        
+        /* Styles pour l'erreur de chargement */
+        .error-container {
+            display: none;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #ff6b6b 0%, #ee5a24 100%);
+            color: white;
+            padding: 2rem;
+        }
+        
+        .error-content {
+            max-width: 600px;
+            margin: 0 auto;
+            text-align: center;
+            padding-top: 10vh;
+        }
+        
+        .error-icon {
+            font-size: 4rem;
+            margin-bottom: 2rem;
+            opacity: 0.8;
+        }
+        
+        .error-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+        
+        .error-message {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+        
+        .error-actions {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .btn-error {
+            background: rgba(255, 255, 255, 0.2);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: var(--border-radius);
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+        }
+        
+        .btn-error:hover {
+            background: rgba(255, 255, 255, 0.3);
+            border-color: rgba(255, 255, 255, 0.5);
+            color: white;
+            text-decoration: none;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .error-title {
+                font-size: 2rem;
+            }
+            
+            .error-message {
+                font-size: 1rem;
+            }
+            
+            .error-actions {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+        
+        /* Styles pour masquer le contenu pendant le chargement */
+        .app-container {
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+        
+        .app-container.loaded {
+            opacity: 1;
+        }
+    </style>
+</head>
+<body>
+    <!-- Loader de chargement -->
+    <div id="page-loader" class="page-loader">
+        <div class="loader-content">
+            <div class="spinner"></div>
+            <div class="loader-text">Chargement du portfolio</div>
+            <div class="loader-subtext">Veuillez patienter...</div>
+        </div>
+    </div>
+    
+    <!-- Container d'erreur (masqué par défaut) -->
+    <div id="error-container" class="error-container">
+        <div class="error-content">
+            <div class="error-icon">
+                <i class="fas fa-exclamation-triangle"></i>
+            </div>
+            <h1 class="error-title">Erreur de chargement</h1>
+            <p class="error-message">
+                Une erreur s'est produite lors du chargement du portfolio. 
+                Veuillez vérifier votre connexion internet et réessayer.
+            </p>
+            <div class="error-actions">
+                <a href="#" class="btn-error" onclick="location.reload()">
+                    <i class="fas fa-redo"></i> Recharger la page
+                </a>
+                <a href="/admin/" class="btn-error">
+                    <i class="fas fa-cog"></i> Administration
+                </a>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Container principal de l'application React -->
+    <div id="root" class="app-container"></div>
+    
+    <!-- Scripts JavaScript -->
+    
+    <!-- Bootstrap JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- AOS Animation -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    
+    <!-- React Development (remplacer par les versions de production lors du déploiement) -->
+    <script crossorigin src="https://cdnjs.cloudflare.com/ajax/libs/react/18.2.0/umd/react.development.js"></script>
+    <script crossorigin src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.2.0/umd/react-dom.development.js"></script>
+    
+    <!-- Babel pour la transpilation JSX en développement -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/7.23.4/babel.min.js"></script>
+    
+    <!-- Axios pour les requêtes HTTP -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.6.0/axios.min.js"></script>
+    
+    <!-- Configuration globale -->
+    <script>
+        // Configuration globale de l'application
+        /*window.PORTFOLIO_CONFIG = {
+            API_BASE_URL: '/api',
+            DEBUG: {% if debug %}true{% else %}false{% endif %},
+            MEDIA_URL: '{{ MEDIA_URL }}',
+            STATIC_URL: '{{ STATIC_URL }}'
+        };*/
+        window.PORTFOLIO_CONFIG = {
+            API_BASE_URL: '/api',
+            DEBUG: false,
+            MEDIA_URL: '/media/',
+            STATIC_URL: '/static/'
+        };
+
+        
+        // Gestion du loader et des erreurs
+        window.addEventListener('load', function() {
+            // Initialisation d'AOS
+            if (typeof AOS !== 'undefined') {
+                AOS.init({
+                    duration: 800,
+                    easing: 'ease-in-out',
+                    once: true,
+                    offset: 100
+                });
+            }
+            
+            // Masquer le loader après un délai minimum
+            setTimeout(() => {
+                const loader = document.getElementById('page-loader');
+                const appContainer = document.getElementById('root');
+                
+                if (loader) {
+                    loader.style.opacity = '0';
+                    setTimeout(() => {
+                        loader.style.display = 'none';
+                        if (appContainer) {
+                            appContainer.classList.add('loaded');
+                        }
+                    }, 500);
+                }
+            }, 1500);
+        });
+        
+        // Gestion des erreurs globales
+        window.addEventListener('error', function(e) {
+            console.error('Erreur JavaScript:', e.error);
+            if (window.PORTFOLIO_CONFIG.DEBUG) {
+                console.log('Stack trace:', e.error.stack);
+            }
+        });
+        
+        // Gestion des erreurs de promesses non catchées
+        window.addEventListener('unhandledrejection', function(e) {
+            console.error('Promesse rejetée non gérée:', e.reason);
+        });
+        
+        // Fonction utilitaire pour afficher l'écran d'erreur
+        window.showErrorScreen = function(message) {
+            const loader = document.getElementById('page-loader');
+            const errorContainer = document.getElementById('error-container');
+            const appContainer = document.getElementById('root');
+            
+            if (loader) loader.style.display = 'none';
+            if (appContainer) appContainer.style.display = 'none';
+            if (errorContainer) {
+                errorContainer.style.display = 'flex';
+                const errorMessage = errorContainer.querySelector('.error-message');
+                if (errorMessage && message) {
+                    errorMessage.textContent = message;
+                }
+            }
+        };
+        
+        // Configuration Axios par défaut
+        if (typeof axios !== 'undefined') {
+            axios.defaults.baseURL = window.PORTFOLIO_CONFIG.API_BASE_URL;
+            axios.defaults.timeout = 10000;
+            
+            // Intercepteur pour les erreurs
+            axios.interceptors.response.use(
+                response => response,
+                error => {
+                    if (error.response) {
+                        console.error('Erreur API:', error.response.status, error.response.data);
+                    } else if (error.request) {
+                        console.error('Erreur réseau:', error.message);
+                    } else {
+                        console.error('Erreur:', error.message);
+                    }
+                    return Promise.reject(error);
+                }
+            );
+        }
+    </script>
+    
+    <!-- Script principal de l'application React -->
+    <script type="text/babel" src="/static/js/app.jsx"></script>
+    
+    <!-- Analytics (à configurer selon vos besoins) -->
+    {% if not debug %}
+    <!-- Google Analytics ou autre service d'analytics -->
+    <script>
+        // Configuration analytics pour la production
+        console.log('Mode production - Analytics activés');
+    </script>
+    {% endif %}
+    
+    <!-- Service Worker pour le cache (optionnel) -->
+    <script>
+        // Enregistrement du service worker en production
+        if ('serviceWorker' in navigator && !window.PORTFOLIO_CONFIG.DEBUG) {
+            window.addEventListener('load', function() {
+                navigator.serviceWorker.register('/static/js/sw.js')
+                    .then(registration => {
+                        console.log('Service Worker enregistré:', registration);
+                    })
+                    .catch(error => {
+                        console.log('Erreur Service Worker:', error);
+                    });
+            });
+        }
+    </script>
+</body>
+</html>

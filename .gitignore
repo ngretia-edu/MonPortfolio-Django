@@ -1,0 +1,23 @@
+# Fichiers/Dossiers à ignorer
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.sqlite3
+*.env
+*.log
+*.pot
+*.mo
+*.swp
+
+# VSCode
+.vscode/
+
+# Environnement virtuel
+env/
+venv/
+portfolio_env/
+
+# Fichiers système
+.DS_Store
+Thumbs.db
